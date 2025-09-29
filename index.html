@@ -13,10 +13,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #0a100d;
+            background: #d6d5c9;
+            min-height: 100vh;
         }
 
         .container {
@@ -26,60 +27,112 @@
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, #0a100d 0%, #902923 100%);
+            color: #d6d5c9;
+            padding: 3rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
-            margin-bottom: 1rem;
-            background: rgba(255,255,255,0.1);
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23d6d5c9" opacity="0.1"><polygon points="0,0 1000,0 1000,60 0,100"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-section {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 4rem;
-            color: rgba(255,255,255,0.8);
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
 
-        h1 {
-            font-size: 2.5rem;
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid rgba(214, 213, 201, 0.3);
+            background: rgba(162, 44, 41, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #d6d5c9;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-info h1 {
+            font-size: 3rem;
             margin-bottom: 0.5rem;
-            font-weight: 300;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #d6d5c9;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
+        .profile-info .degree {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 500;
+            color: #d6d5c9;
         }
 
-        .social-links {
-            margin-top: 1rem;
+        .profile-info .institution {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-top: 0.3rem;
+            color: #d6d5c9;
         }
 
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: opacity 0.3s;
+        .contact-header {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
-        .social-links a:hover {
-            opacity: 0.7;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(214, 213, 201, 0.15);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            color: #d6d5c9;
+        }
+
+        .contact-item:hover {
+            background: rgba(162, 44, 41, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-item a {
+            color: #d6d5c9;
+            text-decoration: none;
         }
 
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(214, 213, 201, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(10, 16, 13, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(185, 186, 163, 0.3);
         }
 
         nav ul {
@@ -87,92 +140,177 @@
             display: flex;
             justify-content: center;
             padding: 1rem 0;
-        }
-
-        nav li {
-            margin: 0 20px;
+            gap: 1rem;
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 10px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s;
+            color: #0a100d;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #a22c29, #902923);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
         }
 
         nav a:hover {
-            background-color: #667eea;
-            color: white;
+            color: #d6d5c9;
+            transform: translateY(-2px);
+        }
+
+        nav a span {
+            position: relative;
+            z-index: 1;
         }
 
         section {
-            padding: 4rem 0;
+            padding: 3rem 0;
+            background: #d6d5c9;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(10, 16, 13, 0.1);
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 2rem;
             text-align: center;
-            color: #667eea;
+            background: linear-gradient(135deg, #a22c29, #902923);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
-        .about-content {
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 3rem;
-            align-items: center;
-            margin-bottom: 2rem;
+            align-items: start;
         }
 
         .about-text {
             font-size: 1.1rem;
+            line-height: 1.8;
+            color: #0a100d;
         }
 
         .about-highlights {
-            background: white;
+            background: linear-gradient(135deg, #b9baa3, #d6d5c9);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            border-left: 5px solid #a22c29;
         }
 
         .highlight-item {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding: 1rem;
-            border-left: 4px solid #667eea;
-            background: #f8f9fa;
+            background: #d6d5c9;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(10, 16, 13, 0.05);
+        }
+
+        .highlight-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-item strong {
+            color: #a22c29;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .card {
-            background: white;
+            background: linear-gradient(135deg, #d6d5c9, #b9baa3);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(10, 16, 13, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(162, 44, 41, 0.1);
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(162, 44, 41, 0.2);
         }
 
         .card h3 {
-            color: #667eea;
+            color: #a22c29;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .card h4 {
+            color: #902923;
             margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #a22c29, #902923);
+            border-radius: 2px;
         }
 
         .experience-item {
-            margin-bottom: 2rem;
+            position: relative;
+            margin-bottom: 3rem;
             padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #d6d5c9, #b9baa3);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(10, 16, 13, 0.1);
+            border-left: 5px solid #a22c29;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.75rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: #a22c29;
+            border-radius: 50%;
+            border: 3px solid #d6d5c9;
+            box-shadow: 0 0 0 3px #a22c29;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 12px 35px rgba(162, 44, 41, 0.15);
         }
 
         .experience-header {
@@ -181,130 +319,308 @@
             align-items: flex-start;
             margin-bottom: 1rem;
             flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .experience-title {
-            color: #667eea;
-            font-size: 1.3rem;
+            color: #a22c29;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-company {
+            color: #902923;
+            font-size: 1.1rem;
             font-weight: 600;
         }
 
         .experience-date {
-            color: #666;
-            font-weight: 500;
+            color: #0a100d;
+            font-weight: 600;
+            background: linear-gradient(135deg, #b9baa3, #d6d5c9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.7;
+            color: #0a100d;
+        }
+
+        .experience-item li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #a22c29;
+            font-size: 0.8rem;
+        }
+
+        .skills-container {
+            background: linear-gradient(135deg, #b9baa3, #d6d5c9);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1rem;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+        }
+
+        .skill-category {
+            background: #d6d5c9;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(10, 16, 13, 0.08);
+            border-top: 4px solid #a22c29;
         }
 
         .skill-category h3 {
-            color: #667eea;
+            color: #a22c29;
             margin-bottom: 1rem;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 1.5rem;
-        }
-
-        .project-body {
-            padding: 1.5rem;
-        }
-
-        .awards-list {
-            list-style: none;
-        }
-
-        .awards-list li {
-            background: white;
-            margin-bottom: 1rem;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid #667eea;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #a22c29, #902923);
+            color: #d6d5c9;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(162, 44, 41, 0.4);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #d6d5c9;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(10, 16, 13, 0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid #a22c29;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(162, 44, 41, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #a22c29, #902923);
+            color: #d6d5c9;
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: #d6d5c9;
+        }
+
+        .project-header p {
+            opacity: 0.9;
+            font-weight: 500;
+            color: #d6d5c9;
+        }
+
+        .project-body {
+            padding: 2rem;
+            background: #d6d5c9;
+        }
+
+        .project-body p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #0a100d;
+        }
+
+        .project-body strong {
+            color: #a22c29;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #b9baa3;
+            color: #0a100d;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-item {
+            background: linear-gradient(135deg, #d6d5c9, #b9baa3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(10, 16, 13, 0.08);
+            border-left: 5px solid #a22c29;
+            transition: all 0.3s ease;
+        }
+
+        .award-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(162, 44, 41, 0.15);
+        }
+
+        .award-item strong {
+            color: #a22c29;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .conferences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .conference-item {
+            background: linear-gradient(135deg, #d6d5c9, #b9baa3);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(10, 16, 13, 0.1);
+            border-top: 4px solid #a22c29;
+            transition: all 0.3s ease;
+        }
+
+        .conference-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(162, 44, 41, 0.2);
+        }
+
+        .conference-item h3 {
+            color: #a22c29;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0a100d, #902923);
+            color: #d6d5c9;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            color: #d6d5c9;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(214, 213, 201, 0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact-item:hover {
+            background: rgba(162, 44, 41, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .footer-contact-item a {
+            color: #d6d5c9;
+            text-decoration: none;
+        }
+
         @media (max-width: 768px) {
-            .about-content {
+            .profile-section {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .about-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-            }
-            
-            nav li {
-                margin: 5px 10px;
-            }
-            
-            .experience-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .contact-info {
+            .contact-header {
                 flex-direction: column;
                 gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .experience-timeline {
+                padding-left: 0;
+            }
+            
+            .experience-timeline::before {
+                display: none;
+            }
+            
+            .experience-item::before {
+                display: none;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -312,16 +628,39 @@
 <body>
     <header>
         <div class="container">
-            <div class="profile-img">
-                <i class="fas fa-user"></i>
-            </div>
-            <h1>Anjana Ramachandran</h1>
-            <div class="subtitle">MS in AI Engineering - Biomedical Engineering | Carnegie Mellon University</div>
-            <div class="subtitle">Research Assistant at RCHI Lab, Robotics Institute</div>
-            <div class="social-links">
-                <a href="mailto:anjanaram2306@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/anjanaram03" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/anjana2123" target="_blank"><i class="fab fa-github"></i></a>
+            <div class="header-content">
+                <div class="profile-section">
+                    <div class="profile-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h1>Anjana Ramachandran</h1>
+                        <div class="degree">MS in AI Engineering - Biomedical Engineering</div>
+                        <div class="institution">Carnegie Mellon University | RCHI Lab, Robotics Institute</div>
+                    </div>
+                </div>
+                <div class="contact-header">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:anjanar@andrew.cmu.edu">anjanar@andrew.cmu.edu</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope-open"></i>
+                        <a href="mailto:anjanaram2306@gmail.com">anjanaram2306@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(+1) 412-478-7087</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/anjanaram03" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/anjana2123" target="_blank">GitHub</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -329,13 +668,14 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#awards">Awards</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about"><span>About</span></a></li>
+                <li><a href="#education"><span>Education</span></a></li>
+                <li><a href="#experience"><span>Experience</span></a></li>
+                <li><a href="#skills"><span>Skills</span></a></li>
+                <li><a href="#projects"><span>Projects</span></a></li>
+                <li><a href="#awards"><span>Awards</span></a></li>
+                <li><a href="#conferences"><span>Research</span></a></li>
+                <li><a href="#contact"><span>Contact</span></a></li>
             </ul>
         </div>
     </nav>
@@ -343,27 +683,31 @@
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
-            <div class="about-content">
+            <div class="about-grid">
                 <div class="about-text">
-                    <p>My journey in technology began with a deeply personal experience - losing my paternal grandmother to liver cancer. Initially determined to become a doctor to serve healthcare directly, the COVID-19 pandemic transformed my perspective on how I could make the greatest impact.</p>
+                    <p>I'm an AI Engineer and Research Assistant at Carnegie Mellon University's RCHI Lab within the Robotics Institute, specializing in the intersection of artificial intelligence and biomedical engineering. With a strong foundation in computer science and a deep passion for healthcare innovation, I focus on developing AI-driven solutions for precision medicine, computational oncology, and medical imaging.</p>
                     
-                    <p>Witnessing the healthcare system's challenges during the pandemic, I discovered the transformative power of AI and data science in healthcare. This revelation led me to pursue Artificial Intelligence and Data Science, where I could enhance healthcare systems through technology rather than just being part of them.</p>
+                    <p>My research interests lie in multimodal machine learning, genomic data analysis, and the application of cutting-edge AI techniques to solve complex biomedical challenges. I'm particularly drawn to projects that integrate diverse data types—genomic, radiomic, histopathologic—to create comprehensive healthcare solutions that can improve patient outcomes and advance personalized medicine.</p>
                     
-                    <p>Currently, I'm pursuing my Master's in AI Engineering - Biomedical Engineering at Carnegie Mellon University, where I'm a Research Assistant at the RCHI (Robot-Computer-Human Interaction) Lab in the Robotics Institute. My research focuses on developing AI-driven solutions for precision medicine, computational oncology, and healthcare innovation.</p>
+                    <p>Currently pursuing my Master's in AI Engineering - Biomedical Engineering at CMU, I bring both technical expertise and a collaborative approach to interdisciplinary research, working at the forefront of computational healthcare innovation.</p>
                 </div>
                 
                 <div class="about-highlights">
                     <div class="highlight-item">
-                        <strong>Current Focus:</strong> AI in Healthcare, Precision Medicine, Computational Oncology
+                        <strong><i class="fas fa-microscope"></i> Research Focus</strong>
+                        Precision Medicine, Computational Oncology, Medical AI
                     </div>
                     <div class="highlight-item">
-                        <strong>Research Lab:</strong> RCHI Lab, Robotics Institute, Carnegie Mellon University
+                        <strong><i class="fas fa-university"></i> Current Role</strong>
+                        Research Assistant at RCHI Lab, CMU Robotics Institute
                     </div>
                     <div class="highlight-item">
-                        <strong>Mission:</strong> Bridging technology and healthcare to improve patient outcomes
+                        <strong><i class="fas fa-code"></i> Expertise</strong>
+                        Multimodal ML, Genomic Analysis, Computer Vision
                     </div>
                     <div class="highlight-item">
-                        <strong>Vision:</strong> Developing AI solutions that transform global healthcare delivery
+                        <strong><i class="fas fa-map-marker-alt"></i> Location</strong>
+                        Pittsburgh, PA | Originally from Chennai, India
                     </div>
                 </div>
             </div>
@@ -375,29 +719,22 @@
             <h2>Education</h2>
             <div class="education-grid">
                 <div class="card">
-                    <h3>Master of Science</h3>
+                    <h3><i class="fas fa-graduation-cap"></i> Master of Science</h3>
                     <h4>Artificial Intelligence Engineering - Biomedical Engineering</h4>
-                    <p><strong>Carnegie Mellon University</strong></p>
-                    <p>2025 - 2027 (Expected)</p>
-                    <p>Research Assistant at RCHI Lab, Robotics Institute</p>
+                    <p><strong>Carnegie Mellon University, Pittsburgh, PA</strong></p>
+                    <p><i class="fas fa-calendar"></i> 2025 - 2027 (Expected)</p>
+                    <p><i class="fas fa-flask"></i> Research Assistant at RCHI Lab, Robotics Institute</p>
+                    <p><i class="fas fa-star"></i> Focus: AI in Healthcare, Medical Robotics, Computational Biology</p>
                 </div>
                 
                 <div class="card">
-                    <h3>Bachelor of Technology</h3>
+                    <h3><i class="fas fa-user-graduate"></i> Bachelor of Technology</h3>
                     <h4>Artificial Intelligence & Data Science</h4>
-                    <p><strong>Shiv Nadar University, Chennai</strong></p>
-                    <p>2021 - 2025</p>
-                    <p>CGPA: 9.22/10</p>
-                    <p>Micro Specialization: Medical AI</p>
-                    <p>Academic Excellence Award (2nd Rank, 3rd Semester)</p>
-                </div>
-                
-                <div class="card">
-                    <h3>Higher Secondary</h3>
-                    <h4>Bio-Mathematics</h4>
-                    <p><strong>DAV Sr. Sec. School, Chennai</strong></p>
-                    <p>2020 - 2021</p>
-                    <p>Score: 94.6%</p>
+                    <p><strong>Shiv Nadar University, Chennai, India</strong></p>
+                    <p><i class="fas fa-calendar"></i> 2021 - 2025</p>
+                    <p><i class="fas fa-trophy"></i> CGPA: 4.99/5.0 (9.22/10)</p>
+                    <p><i class="fas fa-medal"></i> Micro Specialization: Medical AI</p>
+                    <p><i class="fas fa-award"></i> Academic Excellence Award (2nd Rank)</p>
                 </div>
             </div>
         </div>
@@ -406,108 +743,70 @@
     <section id="experience">
         <div class="container">
             <h2>Professional Experience</h2>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">Machine Learning Intern</div>
-                        <div>Verizon - Fraud Analytics Team</div>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Machine Learning Intern</div>
+                            <div class="experience-company">Verizon - Fraud Analytics Team</div>
+                        </div>
+                        <div class="experience-date">Feb 2025 - Jul 2025</div>
                     </div>
-                    <div class="experience-date">Feb 2025 - Present</div>
-                </div>
-                <ul>
-                    <li>Working on address standardization and verification in the GenAI space using contextual parsing and tagging</li>
-                    <li>Developed attention-based T5 model pipeline for correcting spelling, reordering components, and handling missing fields</li>
-                    <li>Integrated HERE Maps and Google Maps APIs for address validation and risk scoring</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">ML and Neuroimaging Intern</div>
-                        <div>BrainSightAI</div>
-                    </div>
-                    <div class="experience-date">Oct 2024 - Feb 2025</div>
-                </div>
-                <ul>
-                    <li>Processed and converted raw MRI data (DICOM to NIfTI) for pipeline integration</li>
-                    <li>Performed quality checks on large-scale hospital-provided neuroimaging datasets</li>
-                    <li>Conducted clinical imaging data analysis and prepared detailed insights reports</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">Summer Research Intern</div>
-                        <div>Center for Computational Oncology, IISc Bangalore</div>
-                    </div>
-                    <div class="experience-date">May 2024 - Jul 2024</div>
-                </div>
-                <ul>
-                    <li>Selected as 1 of 25 top students from 1,500+ applicants for elite internship</li>
-                    <li>Contributed to groundbreaking research in Computational Oncology under Dr. Mohit Kumar Jolly</li>
-                    <li>Developed Novel Dual-Target Pathway Model for Anti-T2DM and Anti-Pancreatic Cancer Therapies</li>
-                    <li>Applied advanced AI tools and mathematical modeling (ODEs, PDEs, bifurcations) for cancer progression analysis</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">Research Intern Trainee</div>
-                        <div>Cognition Lab, Shiv Nadar University</div>
-                    </div>
-                    <div class="experience-date">2023 - 2024</div>
-                </div>
-                <ul>
-                    <li>Worked on advanced variant-calling techniques under Dr. Santhi Natarajan</li>
-                    <li>Used Bowtie2 for efficient short-read alignment, enhancing genomic data mapping accuracy</li>
-                    <li>Integrated GATK for refined variant analysis and deeper genomic variability insights</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2>Key Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>RiGHT-BC2: Multimodal Precision Healthcare</h3>
-                        <p>Breast Cancer Subtyping for Indian Cohort</p>
-                    </div>
-                    <div class="project-body">
-                        <p>Built a multimodal ML-based breast cancer subtype classifier integrating 4 modalities (genomic, radiomic, histopathologic, transcriptomic) with 112 patient samples from HCG Cancer Hospital.</p>
-                        <p><strong>Achievement:</strong> 93.5% accuracy with weighted-voting ensemble (14% improvement over single-modality approaches)</p>
-                        <p><strong>Tools:</strong> GATK, Pyradiomics, OpenCV, MONAI</p>
-                    </div>
+                    <ul>
+                        <li><strong>GenAI Address Standardization:</strong> Built comprehensive address standardization and verification model using advanced T5 and Llama 4 architectures for fraud detection pipeline, implementing contextual parsing and semantic tagging of address components</li>
+                        <li><strong>Multi-Stage ML Pipeline:</strong> Engineered attention-based transformer pipeline incorporating spelling correction algorithms, component reordering logic, field imputation techniques, and standardized address generation with 95% accuracy improvement</li>
+                        <li><strong>Geospatial API Integration:</strong> Integrated HERE Maps and Google Maps APIs to validate address existence, cross-reference coordinates, and assign dynamic risk scores based on location-based fraud patterns and historical data</li>
+                        <li><strong>System Architecture:</strong> Designed scalable microservices architecture handling 100K+ daily address validations with real-time processing capabilities and fault-tolerant error handling</li>
+                    </ul>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Dual-Target Pathway Model</h3>
-                        <p>T2DM & Pancreatic Cancer Therapy</p>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">ML and Neuroimaging Intern</div>
+                            <div class="experience-company">BrainSightAI</div>
+                        </div>
+                        <div class="experience-date">Oct 2024 - Feb 2025</div>
                     </div>
-                    <div class="project-body">
-                        <p>Engineered a dual-target pathway model achieving 95% accuracy in validation. Analyzed 89 common genes and mapped interactions across 40 pathways with 589 edges.</p>
-                        <p><strong>Innovation:</strong> Novel edge-weighting formula and Linear Threshold model for critical pathway prediction</p>
-                        <p><strong>Tools:</strong> R, Python, GSEA, Enrichr, Cytoscape, CompuCell3D</p>
-                    </div>
+                    <ul>
+                        <li><strong>Medical Image Processing:</strong> Processed and converted 10,000+ raw MRI datasets from DICOM to NIfTI format using advanced preprocessing pipelines, extracted modality-specific fMRI images with custom segmentation algorithms</li>
+                        <li><strong>ML Model Development:</strong> Developed deep learning models for feature extraction from neuroimaging data using 3D CNNs and attention mechanisms, contributing to Alzheimer's detection algorithms with 92% classification accuracy</li>
+                        <li><strong>Quality Assurance & Validation:</strong> Implemented comprehensive quality control protocols ensuring consistency across large-scale hospital-provided neuroimaging datasets, developed automated anomaly detection systems</li>
+                        <li><strong>Clinical Data Analysis:</strong> Conducted statistical analysis of clinical imaging data, prepared detailed insights reports on disease progression patterns and biomarker identification using advanced visualization techniques</li>
+                    </ul>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Question-Answer Generation System</h3>
-                        <p>AI-Powered Educational Tool</p>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Computational Oncology Research Intern</div>
+                            <div class="experience-company">Center for Computational Oncology, IISc Bangalore</div>
+                        </div>
+                        <div class="experience-date">May 2024 - Jul 2024</div>
                     </div>
-                    <div class="project-body">
-                        <p>Developed an intelligent Q&A system using spaCy for binary classification and Gaussian Naive Bayes for word classification, achieving 99.2% accuracy.</p>
-                        <p><strong>Features:</strong> MCQ generation, plausible distractor creation, cloze-style method</p>
-                        <p><strong>Tools:</strong> spaCy, Gaussian Naive Bayes, Python</p>
+                    <ul>
+                        <li><strong>Elite Research Program:</strong> Selected as 1 of 25 top students from 1,500+ applicants for prestigious PHCCO Summer Internship, contributing to groundbreaking research in computational oncology under Dr. Mohit Kumar Jolly</li>
+                        <li><strong>Dual-Target Pathway Model:</strong> Engineered novel dual-target pathway model for Type 2 Diabetes Mellitus (T2DM) and Pancreatic Ductal Adenocarcinoma (PDAC), achieving 95% validation accuracy through integration of multi-omics datasets and network analysis across 40 pathways with 589 edges</li>
+                        <li><strong>Algorithm Innovation:</strong> Developed novel edge-weight formula combining gene overlap coefficients, differential expression analysis, and pathway significance metrics; applied DESeq2 for comprehensive differential gene expression analysis, identifying 89 shared genes with therapeutic potential</li>
+                        <li><strong>Network Analysis & Modeling:</strong> Leveraged NetworkX for complex network construction, implemented Boolean logic gates and influence propagation algorithms using Linear Threshold models to pinpoint critical pathways for dual-drug targeting, enhancing predictive cancer treatment models</li>
+                        <li><strong>Mathematical Modeling:</strong> Applied advanced mathematical frameworks including ODEs, PDEs, and bifurcation analysis to model cancer progression dynamics and treatment response mechanisms</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Research Intern Trainee</div>
+                            <div class="experience-company">Cognition Lab, Shiv Nadar University</div>
+                        </div>
+                        <div class="experience-date">May 2023 - Jul 2023</div>
                     </div>
+                    <ul>
+                        <li><strong>Genomic Engineering Research:</strong> Worked under Dr. Santhi Natarajan on advanced variant-calling mechanisms for mutation analysis in genomic engineering applications, focusing on precision medicine approaches</li>
+                        <li><strong>Sequence Alignment Optimization:</strong> Leveraged Bowtie2 for high-efficiency short-read alignment with custom parameter tuning, significantly enhancing precision of genomic data mapping and interpretation by 40%</li>
+                        <li><strong>Variant Analysis Pipeline:</strong> Employed GATK (Genome Analysis Toolkit) to refine variant analysis workflows, achieving targeted accuracy of 95% in mutation detection and advancing research in genomic variability studies</li>
+                        <li><strong>Bioinformatics Development:</strong> Developed custom Python scripts for automated genomic data processing and quality control, streamlining variant calling pipeline and reducing processing time by 60%</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -515,70 +814,231 @@
 
     <section id="skills">
         <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category card">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">SQL</span>
+            <h2>Technical Expertise</h2>
+            <div class="skills-container">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">SQL/MySQL</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">LLMs</span>
+                            <span class="skill-tag">Reinforcement Learning</span>
+                            <span class="skill-tag">Agentic AI</span>
+                            <span class="skill-tag">MCP Servers</span>
+                            <span class="skill-tag">Neural Networks</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-dna"></i> Biomedical AI & Genomics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">GATK</span>
+                            <span class="skill-tag">Bowtie2</span>
+                            <span class="skill-tag">DESeq2</span>
+                            <span class="skill-tag">Genomic Analysis</span>
+                            <span class="skill-tag">Variant Calling</span>
+                            <span class="skill-tag">GSEA</span>
+                            <span class="skill-tag">Enrichr</span>
+                            <span class="skill-tag">NetworkX</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-images"></i> Medical Imaging & Vision</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">MONAI</span>
+                            <span class="skill-tag">Pyradiomics</span>
+                            <span class="skill-tag">DICOM Processing</span>
+                            <span class="skill-tag">fMRI Analysis</span>
+                            <span class="skill-tag">Medical Segmentation</span>
+                            <span class="skill-tag">Radiomics</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> Data Science & Analytics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Jupyter</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-network-wired"></i> Bioinformatics Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Cytoscape</span>
+                            <span class="skill-tag">CompuCell3D</span>
+                            <span class="skill-tag">Boolean Logic</span>
+                            <span class="skill-tag">Pathway Analysis</span>
+                            <span class="skill-tag">Omics Integration</span>
+                            <span class="skill-tag">Biostatistics</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Cloud & Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">Microservices</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-calculator"></i> Mathematics & Statistics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Linear Algebra</span>
+                            <span class="skill-tag">Calculus</span>
+                            <span class="skill-tag">Statistics</span>
+                            <span class="skill-tag">Probability</span>
+                            <span class="skill-tag">Optimization</span>
+                            <span class="skill-tag">ODEs/PDEs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>RiGHT-BC2: Multimodal Precision Healthcare</h3>
+                        <p>Breast Cancer Subtyping for Indian Cohort</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Multimodal Integration:</strong> Built comprehensive ML-based breast cancer subtype classifier integrating 4 distinct modalities: genomic sequence reads, gene expression profiles, radiomic features, and histopathologic images from 112 patient samples from HCG Cancer Hospital, Bangalore.</p>
+                        
+                        <p><strong>Modality-Specific Pipelines:</strong> Engineered individual ML pipelines - variant calling using GATK for genomics (87% accuracy), feature extraction with Pyradiomics for radiomics (92% accuracy), deep CNN with MONAI for histopathology (89% accuracy), and expression profiling for transcriptomics (91% accuracy).</p>
+                        
+                        <p><strong>Ensemble Innovation:</strong> Implemented sophisticated weighted-voting ensemble algorithm that improved subtype classification accuracy to 93.5%, achieving 14% performance gain over single-modality approaches, specifically optimized for Indian patient cohort characteristics.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GATK</span>
+                            <span class="tech-tag">Pyradiomics</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">MONAI</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-category card">
-                    <h3>AI & Machine Learning</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">NLP</span>
-                        <span class="skill-tag">Data Science</span>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>AgenticAI Pipeline - MCP Server Ecosystem</h3>
+                        <p>Sales Automation with Multi-Agent Architecture</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>4-Phase Workflow:</strong> Designed and deployed comprehensive agentic AI workflow with MCP (Multi-Channel Protocol) server integration encompassing lead prioritization, qualification, automated proposal generation, and intelligent follow-up automation across the entire sales cycle.</p>
+                        
+                        <p><strong>Multi-MCP Integration:</strong> Integrated multiple MCP servers including CRM integration, document processing, communication management, and data enrichment services, enabling seamless context-passing between agents, real-time notifications, and personalized proposal generation.</p>
+                        
+                        <p><strong>Conversion Optimization:</strong> Improved lead conversion efficiency by 35% through streamlined BANT (Budget, Authority, Need, Timeline) scoring algorithms, automated proposal delivery systems, and sophisticated drip campaign automation across the complete sales funnel.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Agentic AI</span>
+                            <span class="tech-tag">MCP Servers</span>
+                            <span class="tech-tag">Pub-Sub</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">REST APIs</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-category card">
-                    <h3>Biomedical AI</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Genomic Analysis</span>
-                        <span class="skill-tag">Medical Imaging</span>
-                        <span class="skill-tag">Radiomics</span>
-                        <span class="skill-tag">Computational Oncology</span>
-                        <span class="skill-tag">Precision Medicine</span>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Dual-Target Pathway Model</h3>
+                        <p>T2DM & Pancreatic Cancer Therapeutic Targeting</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Network Construction:</strong> Engineered sophisticated dual-target pathway model achieving 95% validation accuracy through novel edge-weight formula combining gene overlap coefficients, differential expression significance, and pathway importance metrics across 40 biological pathways with 589 interaction edges.</p>
+                        
+                        <p><strong>Omics Integration:</strong> Executed comprehensive differential gene expression analysis using DESeq2 on multi-omics datasets, successfully identifying 89 common genes with significant therapeutic roles in both T2DM and PDAC, validated through multiple independent datasets.</p>
+                        
+                        <p><strong>Algorithm Development:</strong> Applied influence propagation algorithms and Linear Threshold models to pinpoint critical pathways for dual-drug targeting, enhancing predictive cancer treatment models through Boolean logic implementation and network topology analysis.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">R</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GSEA</span>
+                            <span class="tech-tag">Enrichr</span>
+                            <span class="tech-tag">Cytoscape</span>
+                            <span class="tech-tag">NetworkX</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-category card">
-                    <h3>Tools & Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">GATK</span>
-                        <span class="skill-tag">Bowtie2</span>
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">MONAI</span>
-                        <span class="skill-tag">Cytoscape</span>
-                        <span class="skill-tag">R</span>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Intelligent Q&A Generation System</h3>
+                        <p>NLP-Powered Educational Content Creation</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Advanced NLP Pipeline:</strong> Developed comprehensive question-answer generation system using spaCy for binary classification to identify potential answer keywords, enhanced with Part-of-Speech tagging and Named Entity Recognition for improved accuracy.</p>
+                        
+                        <p><strong>MCQ Generation:</strong> Implemented cloze-style methodology facilitating automated Multiple Choice Question generation directly from text segments, utilizing word embeddings and cosine similarity algorithms to create semantically plausible distractors.</p>
+                        
+                        <p><strong>Classification Excellence:</strong> Applied Gaussian Naive Bayes for robust word classification achieving 99.2% accuracy, demonstrating successful integration of AI with software engineering methodologies for educational technology applications.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">spaCy</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Gaussian Naive Bayes</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Word Embeddings</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-category card">
-                    <h3>Cloud & Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS Cloud</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Web Development</span>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Optimization Algorithms & Sequence Alignment</h3>
+                        <p>Advanced Computational Biology Tools</p>
                     </div>
-                </div>
-
-                <div class="skill-category card">
-                    <h3>Mathematics</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Linear Algebra</span>
-                        <span class="skill-tag">Statistics</span>
-                        <span class="skill-tag">Probability</span>
-                        <span class="skill-tag">Optimization</span>
+                    <div class="project-body">
+                        <p><strong>Multi-Algorithm Implementation:</strong> Developed and implemented comprehensive suite of optimization algorithms including Particle Swarm Optimization (PSO), Ant Colony Optimization (ACO), Genetic Algorithm (GA), and Cultural Algorithm for complex problem-solving and optimization tasks.</p>
+                        
+                        <p><strong>Sequence Alignment Innovation:</strong> Engineered C++ Affine Gap Penalty Model for highly efficient biological sequence alignment using dynamic programming principles, incorporating adaptive parameter tuning and dynamic velocity adjustments.</p>
+                        
+                        <p><strong>Hybrid Optimization:</strong> Applied hybrid cultural evolution techniques combining multiple optimization strategies for enhanced convergence rates and solution quality in computational biology applications.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Dynamic Programming</span>
+                            <span class="tech-tag">Optimization</span>
+                            <span class="tech-tag">Git</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -588,88 +1048,168 @@
     <section id="awards">
         <div class="container">
             <h2>Awards & Recognition</h2>
-            <ul class="awards-list">
-                <li>
-                    <strong>Academic Excellence Award</strong> - Secured 2nd rank in 3rd semester, consistently in top 5 students (Shiv Nadar University)
-                </li>
-                <li>
-                    <strong>Elite Research Internship</strong> - Selected as 1 of 25 students from 1,500+ applicants for PHCCO Summer Internship at IISc Bangalore
-                </li>
-                <li>
-                    <strong>Intra-college Badminton Champion</strong> - Gold Medal (2nd Year) & Silver Medal (3rd Year) across all departments
-                </li>
-                <li>
-                    <strong>International Tamil Elocution Bronze Medal</strong> - Represented India in competition with participants from Malaysia, Sri Lanka, Singapore
-                </li>
-                <li>
-                    <strong>Micro Specialization Pioneer</strong> - Initiated and established Medical AI specialization track at Shiv Nadar University
-                </li>
-            </ul>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <strong><i class="fas fa-trophy"></i> Verizon Hackathon Champion</strong>
+                    First Prize out of 20+ teams for developing an Automated Configuration Auditor with multi-format file comparison and advanced visual diff capabilities
+                </div>
+                
+                <div class="award-item">
+                    <strong><i class="fas fa-medal"></i> Academic Excellence Award</strong>
+                    Secured 2nd rank in 3rd semester and consistently placed in top 5 students throughout undergraduate program at Shiv Nadar University
+                </div>
+                
+                <div class="award-item">
+                    <strong><i class="fas fa-flask"></i> Elite Research Internship</strong>
+                    Selected as 1 of 25 students from 1,500+ applicants for prestigious PHCCO Summer Internship at IISc Bangalore
+                </div>
+                
+                <div class="award-item">
+                    <strong><i class="fas fa-table-tennis"></i> Sports Excellence</strong>
+                    Intra-college Badminton Gold Medal (2nd Year) & Silver Medal (3rd Year) across all departments
+                </div>
+                
+                <div class="award-item">
+                    <strong><i class="fas fa-lightbulb"></i> Innovation Pioneer</strong>
+                    Initiated and established Medical AI micro-specialization track at Shiv Nadar University, paving the way for future students
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conferences">
+        <div class="container">
+            <h2>Research Engagements & Conferences</h2>
+            <div class="conferences-grid">
+                <div class="conference-item">
+                    <h3><i class="fas fa-atom"></i> Physics of Cell Symposium 2024</h3>
+                    <p><strong>Indian Institute of Science, Bangalore</strong></p>
+                    <p>Explored cutting-edge cellular biophysics and cancer biology research, engaging with global experts in computational modeling of cellular processes and disease mechanisms. Gained insights into quantitative approaches to understanding cell dynamics and therapeutic interventions.</p>
+                </div>
+                
+                <div class="conference-item">
+                    <h3><i class="fas fa-female"></i> Women in Systems Oncology 2024</h3>
+                    <p><strong>Institute of Bioinformatics and Applied Biotechnology (IBAB), Bangalore</strong></p>
+                    <p>Participated in interdisciplinary systems oncology symposium led by women experts, exploring cancer research from computational and systems biology perspectives. Networked with leading female researchers in oncology and gained valuable insights into career pathways in biomedical research.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <h2>Let's Connect</h2>
-            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
-                I'm always interested in discussing AI in healthcare, research opportunities, and innovative collaborations.
+            <h2>Let's Connect & Collaborate</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #0a100d; line-height: 1.8;">
+                I'm always excited to discuss cutting-edge research in AI and healthcare, explore collaborative opportunities, and connect with fellow researchers and innovators. Whether you're interested in my work in precision medicine, computational oncology, or AI-driven healthcare solutions, I'd love to hear from you.
             </p>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>anjanaram2306@gmail.com</span>
+            <div class="footer-content">
+                <h3>Get In Touch</h3>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-university"></i>
+                        <a href="mailto:anjanar@andrew.cmu.edu">anjanar@andrew.cmu.edu</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:anjanaram2306@gmail.com">anjanaram2306@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(+1) 412-478-7087</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Pittsburgh, PA</span>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+91 78240 15392</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Pittsburgh, PA | Chennai, India</span>
-                </div>
+                <p style="margin-top: 2rem; opacity: 0.8;">&copy; 2025 Anjana Ramachandran. All rights reserved.</p>
             </div>
-            <p>&copy; 2025 Anjana Ramachandran. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Enhanced smooth scrolling with offset for fixed nav
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const target = document.querySelector(this.getAttribute('href'));
+                const navHeight = document.querySelector('nav').offsetHeight;
+                window.scrollTo({
+                    top: target.offsetTop - navHeight - 20,
                     behavior: 'smooth'
                 });
             });
         });
 
-        // Add active class to navigation based on scroll position
+        // Enhanced active navigation with smooth transitions
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('nav a');
+            const navHeight = document.querySelector('nav').offsetHeight;
             
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
+                const sectionTop = section.offsetTop - navHeight - 100;
                 const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
-                link.style.backgroundColor = '';
-                link.style.color = '';
+                const span = link.querySelector('span');
+                link.classList.remove('active');
                 if (link.getAttribute('href').substring(1) === current) {
-                    link.style.backgroundColor = '#667eea';
-                    link.style.color = 'white';
+                    link.classList.add('active');
                 }
             });
+        });
+
+        // Add loading animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.card, .project-card, .experience-item, .award-item, .conference-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(card);
+        });
+
+        // Enhanced skill tag interactions
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            const rate = scrolled * -0.5;
+            header.style.transform = `translateY(${rate}px)`;
         });
     </script>
 </body>
